@@ -1,0 +1,11 @@
+{
+  "name": "miricanvas_mobile_team_study_fist_round",
+  "version": "1.0.0",
+  "description": "miricanvas mobile team study first round",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "uk",
+  "license": "ISC"
+}
