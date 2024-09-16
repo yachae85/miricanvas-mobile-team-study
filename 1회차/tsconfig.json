@@ -16,9 +16,6 @@
     "jsx": "react-jsx",
     "noEmit": false,
     "baseUrl": "./src",
-    "paths": {
-      "@components/*": ["components/*"]
-    },
     "outDir": "./dist"
   },
   "include": ["src"],

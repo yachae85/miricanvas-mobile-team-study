@@ -1,5 +1,11 @@
+import { TestComponent } from './components/TestComponent';
+
 const App = () => {
-  return <>asd</>;
+  return (
+    <div>
+      <TestComponent />
+    </div>
+  );
 };
 
 export default App;
