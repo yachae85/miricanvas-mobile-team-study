@@ -9,7 +9,7 @@ export const TestComponent = () => {
   };
 
   const onClickAnother = () => {
-    setAnotherCounter(anotherCounter + 1);
+    setAnotherCounter((prev) => prev + 1);
   };
 
   return (
