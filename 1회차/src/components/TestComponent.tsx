@@ -1,13 +1,13 @@
 import { useMemo } from '../custom_hooks/useMemo';
 import { useEffect } from '../custom_hooks/useEffect';
 import { useState } from '../custom_hooks/useState';
+import { useMemo as useRealMemo } from 'react';
 
 export const TestComponent = () => {
   const [counter, setCounter] = useState<number>(0);
   const [anotherCounter, setAnotherCounter] = useState<number>(0);
   const [thirdCounter, setThirdCounter] = useState<number>(0);
   const tempMemo = useMemo(() => Boolean(counter % 2), [counter]);
-  console.log(tempMemo);
 
   const onClick = () => {
     setCounter(counter + 1);
@@ -22,15 +22,15 @@ export const TestComponent = () => {
   };
 
   useEffect(() => {
-    console.log('counter or antherCounter changed');
-    console.log('counter: ', counter);
-    console.log('anotherCounter: ', anotherCounter);
+    // console.log('counter or antherCounter changed');
+    // console.log('counter: ', counter);
+    // console.log('anotherCounter: ', anotherCounter);
   }, [counter, anotherCounter]);
 
-  // useEffect(() => {
-  //   console.log('custom useMemo');
-  //   console.log('meoization value: ', tempMemo);
-  // }, [counter]);
+  useEffect(() => {
+    console.log('custom useMemo');
+    console.log('meoization value: ', tempMemo);
+  }, [tempMemo]);
 
   return (
     <div>
