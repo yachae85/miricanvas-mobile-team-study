@@ -1,7 +1,6 @@
 import { useMemo } from '../custom_hooks/useMemo';
 import { useEffect } from '../custom_hooks/useEffect';
 import { useState } from '../custom_hooks/useState';
-import { useMemo as useRealMemo } from 'react';
 
 export const TestComponent = () => {
   const [counter, setCounter] = useState<number>(0);
