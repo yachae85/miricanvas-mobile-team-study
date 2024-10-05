@@ -1,19 +1,23 @@
-import { useState } from './useState';
+import { useRef } from 'react';
 
-export const useEffect = (callback: Function, dependency: any[]) => {
-  const [prevState, setPrevState] = useState<any[]>(dependency);
-  const [hasMounted, setHasMounted] = useState(false);
+export const useEffect = (callback: Function, dependency?: any[]) => {
+  // 추후 useRef도 커스텀으로
+  const prevState = useRef<any[] | undefined>();
+  const hasMounted = useRef(false);
+
+  if (!hasMounted.current) {
+    callback();
+    hasMounted.current = true;
+  }
 
   const hasChanged =
-    prevState.length === 0 || prevState.some((state, i) => state !== dependency[i]);
+    prevState.current !== undefined && dependency !== undefined
+      ? prevState.current.length === 0 ||
+        prevState.current.some((state, i) => state !== dependency[i])
+      : true;
 
-  if (!hasMounted || hasChanged) {
+  if (hasChanged) {
     callback();
-
-    setPrevState(dependency);
-
-    if (!hasMounted) {
-      setHasMounted(true);
-    }
+    prevState.current = dependency;
   }
 };
